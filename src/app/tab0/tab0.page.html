@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title float-start>
+      <h4>
+        SPFC Basquete
+      </h4>
+    </ion-title>
+    <ion-icon padding float-end name="notifications-outline" (click)="openSearchPage"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content *ngFor="let post of post" color="tertiary">
+<div class="headerContent">
+<div class="headerimg">
+  <div class="headerimg1"><img [src]="post.media_url"></div>
+    
+</div>
+
+<div>
+    <ion-card style="background:white; z-index: 2;" color="light" [routerLink]="['/','readmore', post.id]">
+      <ion-card-header>
+        <ion-card-title class="cardtitle">{{post.title.rendered}}</ion-card-title>
+        <ion-card-subtitle  > {{post.date_gmt | date}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div [innerHTML]="post.excerpt.rendered"></div>
+        <ion-button expand="full" fill="clear" [routerLink]="['/','readmore', post.id]" text-right>
+        Leia Mais...</ion-button>
+      </ion-card-content>
+    </ion-card>
+ 
+</div>
+</div>
+<br>
+<br>
+<div style="background:white;">
+    <ion-segment [(ngModel)]="wp.sort" (ionChange)="selectfilter()" color="primary">
+      <ion-segment-button value="0" checked>
+        <ion-label>Próximos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="1">
+        <ion-label>Últimos</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    </div>
+<div *ngFor="let event of event">
+
+    <ion-card style="background:white;" color="light">
+      <ion-card-content>
+        <ion-row>
+          <ion-col text-center class="col1"><img *ngIf="event.home" [src]="event.home">
+          </ion-col>
+          <ion-col class="col1">
+              <b><h2>{{event.main_results[0]|| '0'}}</h2></b>
+          </ion-col>
+          <ion-col text-center class="col2"><h1>
+             VS</h1>
+             <b>{{event.date | date:"dd/MM 'às' HH:mm"}}</b>
+           </ion-col>
+           <ion-col class="col1">
+              <b><h2>{{event.main_results[1]|| '0'}}</h2></b>
+           </ion-col>
+          <ion-col text-center class="col1"><img *ngIf="event.visitor" [src]="event.visitor">
+         </ion-col>
+        </ion-row>
+       
+      </ion-card-content>
+      <ion-row class="col3">
+          {{event.stadiumNow}}
+        </ion-row>
+    </ion-card>
+</div>
+<div>
+  <div class="headerNow">Tabela</div>
+  <ion-row class="headerPos"  text-center>
+      <ion-col style="flex-grow: 1;">POS</ion-col>
+      <ion-col style="flex-grow: 5;">TIMES</ion-col>
+      <ion-col style="flex-grow: 1;">V</ion-col>
+      <ion-col style="flex-grow: 1;">D</ion-col>
+      <ion-col style="flex-grow: 1;">SAL</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let stands of tables" class="contentPos" text-center padding>
+        <ion-col style="flex-grow: 1;">{{stands.pos}}</ion-col>
+        <ion-col style="flex-grow: 5; align-items: center;">
+          {{stands.name}}</ion-col>
+        <ion-col style="flex-grow: 1;">{{stands.w}}</ion-col>
+        <ion-col style="flex-grow: 1;">{{stands.l}}</ion-col>
+        <ion-col style="flex-grow: 1;">{{stands.pon}}</ion-col>
+      </ion-row>
+</div>
+<div>
+  
+  <div class="headerNow" text-center>Notícias</div>
+    <ion-card style="background:white;" *ngFor="let post of rest" color="light" [routerLink]="['/','readmore', post.id]">
+      <ion-card-header>
+        <ion-card-title   [innerHTML]="post.title.rendered" ></ion-card-title>
+        <ion-card-subtitle  > {{post.date_gmt | date}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <img [src]="post.media_url">
+        <div [innerHTML]="post.excerpt.rendered"></div>
+        <ion-button expand="full" fill="clear" [routerLink]="['/','readmore', post.id]" text-right>
+        Leia Mais...</ion-button>
+      </ion-card-content>
+    </ion-card>
+</div>
+</ion-content>

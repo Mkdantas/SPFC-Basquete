@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title float-start>
+      <h4>
+        SPFC Basquete
+      </h4>
+    </ion-title>
+    <ion-icon padding float-end name="notifications-outline" (click)="openSearchPage"></ion-icon>
+    <div >
+      <ion-row class="headerPos"  text-center>
+        <ion-col style="flex-grow: 1;">POS</ion-col>
+        <ion-col style="flex-grow: 5;">TIMES</ion-col>
+        <ion-col style="flex-grow: 1;">W</ion-col>
+        <ion-col style="flex-grow: 1;">L</ion-col>
+        <ion-col style="flex-grow: 1;">SAL</ion-col>
+      </ion-row>
+      </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="tertiary">
+  
+
+<ion-refresher slot="fixed" (ionRefresh)="refreshNow($event)">
+  <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="spinner" *ngIf="show" text-center>
+    <ion-spinner slot="fixed"  name="crescent"></ion-spinner>
+    Carregando..
+    </div>
+
+
+<div *ngFor="let stands of posts">
+<ion-row class="contentPos" text-center padding>
+  <ion-col style="flex-grow: 1;">{{stands.pos}}</ion-col>
+  <ion-col style="flex-grow: 5; align-items: center;">
+    {{stands.name}}</ion-col>
+  <ion-col style="flex-grow: 1;">{{stands.w}}</ion-col>
+  <ion-col style="flex-grow: 1;">{{stands.l}}</ion-col>
+  <ion-col style="flex-grow: 1;">{{stands.pon}}</ion-col>
+</ion-row>
+</div>
+
+</ion-content>
+

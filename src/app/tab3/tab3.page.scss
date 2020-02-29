@@ -1,0 +1,34 @@
+.headerPos{
+    display:flex;
+    width: 100%;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+
+    
+    
+}
+
+.contentPos {
+    background: rgb(255, 255, 255);
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Archivo Black', sans-serif;
+    color: rgb(0, 0, 0);
+    border-bottom-color: rgb(228, 228, 228);
+    border-bottom-style: groove
+    
+}
+
+ion-icon {
+    font-size: 25px;
+  }
+  .spinner {
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color:black;
+  
+  }

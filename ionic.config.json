@@ -1,0 +1,7 @@
+{
+  "name": "SPFC Basquete",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

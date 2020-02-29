@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title float-start>
+      <h4>
+        SPFC Basquete
+      </h4>
+    </ion-title>
+    <ion-icon padding float-end name="notifications-outline" (click)="openSearchPage"></ion-icon>
+    <div>
+      <ion-segment [(ngModel)]="wp.sort" (ionChange)="selectfilter()">
+        <ion-segment-button value="0" checked>
+          <ion-label>Próximos</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="1">
+          <ion-label>Últimos</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      </div>
+  </ion-toolbar>
+</ion-header>
+ 
+<ion-content padding color="tertiary">
+  <ion-refresher slot="fixed" (ionRefresh)="refreshNowFuture($event)">
+    <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <div class="spinner" *ngIf="show" text-center>
+    <ion-spinner slot="fixed" *ngIf="show" name="crescent"></ion-spinner>
+    Carregando...
+    </div>
+<div *ngFor="let post of postsFuture">
+  <ion-card style="background:white;" *ngIf="post.teams" color="light">
+    <ion-card-content>
+      <ion-row>
+        <ion-col text-center class="col1"><img *ngIf="post.home" [src]="post.home">
+        </ion-col>
+        <ion-col class="col1">
+            <b><h2>{{post.main_results[0]|| '0'}}</h2></b>
+        </ion-col>
+        <ion-col text-center class="col2"><h1>
+           VS</h1>
+           <b>{{post.date | date:"dd/MM 'às' HH:mm"}}</b>
+         </ion-col>
+         <ion-col class="col1">
+            <b><h2>{{post.main_results[1]|| '0'}}</h2></b>
+         </ion-col>
+        <ion-col text-center class="col1"><img *ngIf="post.visitor" [src]="post.visitor">
+       </ion-col>
+      </ion-row>
+     
+    </ion-card-content>
+    <ion-row class="col3">
+        {{post.stadiumNow}}
+      </ion-row>
+  </ion-card>
+  </div>
+  <ion-infinite-scroll threshold="300px" (ionInfinite)="loadMoreFuture($event)">
+  <ion-infinite-scroll-content loadingText="Carregando mais jogos...">
+  </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+    
+</ion-content>
+

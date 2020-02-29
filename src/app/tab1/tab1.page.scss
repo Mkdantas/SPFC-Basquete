@@ -1,0 +1,16 @@
+.welcome-card img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+ion-icon {
+  font-size: 25px;
+}
+.spinner {
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color:black;
+
+}

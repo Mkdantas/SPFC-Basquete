@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title float-start>
+      <h4>
+        SPFC Basquete
+      </h4>
+    </ion-title>
+    <ion-icon padding float-end name="notifications-outline" (click)="openSearchPage"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <ion-list>
+        <ion-list-header style="font-size: 20px; color:black; justify-content: center;" >
+          Mais sobre o São Paulo Basqute
+        </ion-list-header>
+        <ion-item [routerLink]="['/','jogadores']">
+          <ion-icon slot="start" name="person" size="large"></ion-icon>
+          <ion-label size="large">Jogadores</ion-label>
+        </ion-item>
+
+        <ion-item>
+            <ion-icon slot="start" name="headset" size="large"></ion-icon>
+            <ion-label size="large">PodCast</ion-label>
+            <ion-chip slot="end" color="secondary">Em Breve</ion-chip>
+          </ion-item>
+
+        <ion-list-header style="font-size: 20px; color:black; justify-content: center;" >
+            Redes Sociais
+          </ion-list-header>
+          <ion-item href="https://www.facebook.com/spfcbasquete/" target="_blank">
+              <ion-icon slot="start" name="logo-facebook" size="large"></ion-icon>
+              <ion-label size="large">SPFC Basquete</ion-label>
+            </ion-item>
+            <ion-item href="https://www.instagram.com/spfcbasqueteoficial/" target="_blank">
+                <ion-icon slot="start" name="logo-instagram" size="large"></ion-icon>
+                <ion-label size="large">@spfcbasquete.com.br</ion-label>
+              </ion-item>
+              <ion-item href="https://twitter.com/spfcbasquete" target="_blank">
+                  <ion-icon slot="start" name="logo-twitter" size="large"></ion-icon>
+                  <ion-label size="large">@spfcbasquete</ion-label>
+                </ion-item>
+                <ion-item href="https://www.youtube.com/channel/UCiHopweW230M08KZjkbUofA" target="_blank">
+                    <ion-icon slot="start" name="logo-youtube" size="large"></ion-icon>
+                    <ion-label size="large">SPFC Basquete</ion-label>
+                  </ion-item>
+                  <ion-list-header style="font-size: 20px; color:black; justify-content: center;" >
+                    Temas
+                  </ion-list-header>
+                  <ion-item>
+                    <ion-toggle slot="start"></ion-toggle>
+                    <ion-label size="large">Modo Padrão</ion-label>
+                  </ion-item>
+                  <ion-item>
+                    <ion-toggle slot="start" ></ion-toggle>
+                    <ion-label size="large">Modo Claro</ion-label>
+                  </ion-item>
+                  <ion-item>
+                      <ion-toggle slot="start" color="dark"></ion-toggle>
+                      <ion-label size="large">Modo Escuro</ion-label>
+                    </ion-item>
+      </ion-list>
+</ion-content>
