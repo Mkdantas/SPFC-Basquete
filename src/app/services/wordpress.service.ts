@@ -47,7 +47,7 @@ export class WordpressService {
         let data = resp['body'];
         
         for (let post of data) {
-          post.media_url = post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['medium'].source_url;
+          post.media_url = post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['full'].source_url;
 
         }
         return data;
@@ -78,7 +78,7 @@ export class WordpressService {
     } else{
     return this.http.get(`${this.url}wp/v2/posts/${id}?_embed`).pipe(
       map(post => {
-        post['media_url'] = post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['medium'].source_url;
+        post['media_url'] = post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['full'].source_url;
         return post;
       }),
       tap(res=>{
@@ -295,7 +295,7 @@ getPostsHome(page = 1){
       let data = resp['body'];
       
       for (let post of data) {
-        post.media_url = post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['medium'].source_url;
+        post.media_url = post['_embedded']['wp:featuredmedia'][0]['media_details'].sizes['full'].source_url;
 
       }
       return data;
