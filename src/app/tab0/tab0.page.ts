@@ -10,7 +10,7 @@ import { NetworkService } from '../services/network.service';
 })
 export class Tab0Page implements OnInit {
   post: [];
-  event: [];
+  event = [];
   rest: [];
   tables: any;
 
@@ -64,9 +64,14 @@ export class Tab0Page implements OnInit {
     });
     loading.present();
     this.wp.getEventHome().subscribe(res=>{
-      this.event = res;
+      this.event = []
+      for(let i = 0; i < res.length; i++){
+        if(res[i].teams[0] == 404 || res[i].teams[1] == 404){
+          this.event.push(res[i]);
+      }
+    }
       loading.dismiss();
-      console.log(res);
+      console.log(this.event);
     })
     
   }

@@ -100,7 +100,7 @@ export class WordpressService {
     options = {
       observe: "response" as "body",
       params: {
-        per_page: '10',
+        per_page: '80',
         page: '' +page,
         order: 'asc',
         after: this.yyyy + '-'+ this.mm+'-' + this.dd + 'T12:50:59'
@@ -112,7 +112,7 @@ export class WordpressService {
     options = {
       observe: "response" as "body",
       params: {
-        per_page: '10',
+        per_page: '80',
         page: '' +page,
         order: 'desc',
         before: this.yyyy + '-'+ this.mm+'-' + this.dd + 'T12:50:59'
@@ -129,7 +129,13 @@ export class WordpressService {
         this.totalPosts = resp['headers'].get('x-wp-total');
 
 
-        let data = resp['body'];
+        let data = [];
+        for(let i = 0; i < resp['body'].length; i++){
+          if(resp['body'][i].teams[0] == 404 || resp['body'][i].teams[1] == 404){
+          
+         data.push(resp['body'][i]);
+          }
+        }
 
         for(let post of data){
           post.team_home = post['teams'][0];
@@ -310,7 +316,7 @@ getEventHome(page = 1){
   options = {
     observe: "response" as "body",
     params: {
-      per_page: '1',
+      per_page: '10',
       page: '' +page,
       order: 'asc',
       after: this.yyyy + '-'+ this.mm+'-' + this.dd + 'T12:50:59'
@@ -322,7 +328,7 @@ getEventHome(page = 1){
   options = {
     observe: "response" as "body",
     params: {
-      per_page: '1',
+      per_page: '20',
       page: '' +page,
       order: 'desc',
       before: this.yyyy + '-'+ this.mm+'-' + this.dd + 'T12:50:59'
@@ -337,10 +343,13 @@ getEventHome(page = 1){
     map(resp => {
       this.pages = resp['headers'].get('x-wp-totalpages');
       this.totalPosts = resp['headers'].get('x-wp-total');
-
-
-      let data = resp['body'];
-
+      let data = [];
+      for(let i = 0; i < resp['body'].length; i++){
+        if(resp['body'][i].teams[0] == 404 || resp['body'][i].teams[1] == 404){
+        
+       data.push(resp['body'][i]);
+        }
+      }
       for(let post of data){
         post.team_home = post['teams'][0];
         post.team_visitor = post['teams'][1];
