@@ -1,5 +1,7 @@
 # SPFC - Basquete App
 
+![Project image](https://i.ibb.co/f1p6NZ3/Whats-App-Image-2023-11-08-at-21-48-27-b975575f.jpg)
+
 Technologies Used: Ionic, TypeScript, Firebase, AngularJS
 
 The SPFC - Basquete app is a comprehensive basketball application that provides users with features to view the match schedule and history, live scoreboards, relevant blog posts about the SPFC team, and detailed information about the team itself. The app is built using a stack of modern technologies, including Ionic, TypeScript, Firebase, and AngularJS. It offers the following key features:
